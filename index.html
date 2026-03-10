@@ -28,7 +28,7 @@
                     "footer footer";
 
                 grid-template-columns: 1fr 3fr;
-                grid-template-rows: 80px 1fr 60px;
+                grid-template-rows: 0.5fr 0.5fr 8fr 0.5fr;
 
                 min-height: 93vh;
                 border: 15px gray solid;
@@ -96,6 +96,19 @@
                 font-weight: bold;
                 color: darkred;
             }
+
+            .navegador{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                grid-template-rows: 1fr;
+            }
+
+            .navitems{
+                align-content: center;
+                text-align: center;
+                grid-column: 1/span 4 ;
+                background-color: black;
+            }
         </style>
     </head>
 
@@ -104,6 +117,15 @@
             <div class="item1">
                 <h1>Universidad industrial de Santader</h1>
             </div>
+
+            <nav class="navegador">
+                    <div class="navitems">
+                    <a href="#cuento">Cuento</a>
+                    <a href="#arcoiris">Arcoiris</a>
+                    <a href="#mosaico">Mosaico</a>
+                    </div>
+                </nav>
+            
             <div class="item2">
                 <nav class="menu">
                     <a href="#cuento">Cuento</a>
