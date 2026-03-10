@@ -1,1 +1,17 @@
+        nav ol {
+            display: flex;     
+            flex-direction: row;    /* "row" es el valor por defecto, así que van de izq a der */
+            justify-content: space-around; 
+            align-items: center;
+            width: 100%;            /* Espacio entre links */
+            list-style: none;  
+               /* Quita los números */
+        }
 
+        .flex-container>nav{
+            background-color: black;
+            width: 80vmax;
+            height: 10%;
+            display: flex;
+            align-items: center;
+        }
