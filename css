@@ -1,17 +1,807 @@
-        nav ol {
-            display: flex;     
-            flex-direction: row;    /* "row" es el valor por defecto, así que van de izq a der */
-            justify-content: space-around; 
-            align-items: center;
-            width: 100%;            /* Espacio entre links */
-            list-style: none;  
-               /* Quita los números */
-        }
+/* ============================================================
+   disWeb26 — Estilos Principales
+   Metodología: Bootstrap 5 + CSS Grid + Flexbox
+   UIS — Programación en la Web
+   ============================================================ */
 
-        .flex-container>nav{
-            background-color: black;
-            width: 80vmax;
-            height: 10%;
-            display: flex;
-            align-items: center;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Rajdhani:wght@400;600;700&display=swap');
+
+/* === VARIABLES GLOBALES === */
+:root {
+  --teal:        #2abfbf;
+  --teal-dark:   #1a8f8f;
+  --teal-header: #2abfbf;
+  --nav-bg:      #111111;
+  --sidebar-bg:  #1e3535;
+  --sidebar-txt: #9ecece;
+  --body-bg:     #f0fbfb;
+  --footer-bg:   #2abfbf;
+  --footer-txt:  #ffffff;
+  --font-title:  'Cinzel', serif;
+  --font-deco:   'Cinzel Decorative', serif;
+  --font-body:   'Lora', serif;
+  --font-ui:     'Rajdhani', sans-serif;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--body-bg);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ================================================================
+   HEADER
+   ================================================================ */
+header {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  display: flex;
+  align-items: center;
+  padding: 14px 28px;
+  gap: 20px;
+  min-height: 80px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+header .logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #fff;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 6px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+  flex: 1;
+  text-align: center;
+}
+
+/* ================================================================
+   NAVBAR — con Tooltips CSS
+   ================================================================ */
+nav.main-nav {
+  background-color: var(--nav-bg);
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  position: relative;
+  z-index: 50;
+}
+
+nav.main-nav a {
+  font-family: var(--font-ui);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 13px 32px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  /* Tooltip */
+  --tooltip-text: '';
+}
+
+nav.main-nav a:hover {
+  background-color: var(--teal);
+}
+
+/* Tooltip: texto en data-tooltip */
+nav.main-nav a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s 0.1s;
+  z-index: 200;
+  letter-spacing: 0.5px;
+}
+nav.main-nav a:hover::after { opacity: 1; }
+
+/* ================================================================
+   LAYOUT PRINCIPAL — CSS Grid 2 columnas
+   ================================================================ */
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 195px 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ================================================================
+   SIDEBAR
+   ================================================================ */
+aside.sidebar {
+  background-color: var(--sidebar-bg);
+  padding: 26px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+aside.sidebar a {
+  font-family: var(--font-ui);
+  color: var(--sidebar-txt);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+aside.sidebar a:hover { color: var(--teal); }
+aside.sidebar a.active { color: #fff; }
+
+/* ================================================================
+   ÁREA DE CONTENIDO (iframe)
+   ================================================================ */
+.content-area {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.content-area iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  border: none;
+  display: block;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+footer.main-footer {
+  background-color: var(--footer-bg);
+  padding: 12px 20px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+footer.main-footer span {
+  font-family: var(--font-ui);
+  color: var(--footer-txt);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+footer.main-footer:hover span { text-decoration: underline; }
+
+/* ================================================================
+   PÁGINA: CARRUSEL
+   ================================================================ */
+.page-carrusel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #e0f9f9 0%, #b2ebeb 100%);
+  overflow: hidden;
+  padding: 20px 0 30px;
+}
+
+.page-carrusel h2 {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--teal-dark);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.carousel-outer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 22px;
+  animation: slide-infinite 18s linear infinite;
+  width: max-content;
+  padding: 0 16px 10px;
+}
+
+.carousel-track:hover { animation-play-state: paused; }
+
+@keyframes slide-infinite {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animal-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(42,191,191,0.22);
+  padding: 18px 14px 14px;
+  width: 195px;
+  text-align: center;
+  flex-shrink: 0;
+  border-top: 5px solid var(--teal);
+  transition: transform 0.3s;
+}
+.animal-card:hover { transform: translateY(-5px); }
+
+.animal-card .emoji { font-size: 1.5rem; margin-bottom: 6px; }
+
+.animal-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #d6f5f5;
+}
+
+.animal-card h3 {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--teal-dark);
+  margin-bottom: 5px;
+}
+
+.animal-card p {
+  font-size: 0.76rem;
+  color: #666;
+  font-family: var(--font-ui);
+  line-height: 1.4;
+}
+
+/* ================================================================
+   PÁGINA: CUENTO
+   ================================================================ */
+.page-cuento {
+  padding: 26px 32px 32px;
+  max-width: 100%;
+  background: #fafafa;
+}
+
+.page-cuento h2 {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  color: var(--teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.page-cuento p {
+  font-size: 1rem;
+  line-height: 1.9;
+  text-align: justify;
+  margin-bottom: 22px;
+  color: #222;
+  font-family: var(--font-body);
+  overflow: hidden; /* para el float de ::first-letter */
+}
+
+/* Primera letra — capital decorativa */
+.page-cuento p::first-letter {
+  font-family: var(--font-title);
+  font-size: 4rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.74;
+  margin: 6px 8px 0 0;
+  color: var(--teal);
+}
+
+/* Primera línea — estilo diferente */
+.page-cuento p::first-line {
+  font-style: italic;
+  color: var(--teal);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ================================================================
+   PÁGINA: ARCOÍRIS
+   ================================================================ */
+.page-arcoiris {
+  padding: 24px 28px 30px;
+  background: #f5faff;
+  text-align: center;
+  font-family: var(--font-deco);
+}
+
+.arco-title {
+  font-family: var(--font-deco);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* Colores del espectro visible */
+.arc-r  { color: #FF0000; }
+.arc-o  { color: #FF6600; }
+.arc-a  { color: #FFCC00; }
+.arc-v  { color: #00AA00; }
+.arc-az { color: #0044FF; }
+.arc-i  { color: #2200AA; }
+.arc-vi { color: #7700CC; }
+
+/* La primera letra grande del título */
+.arc-big {
+  font-size: 5rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.arco-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: #555;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.arco-img {
+  width: 58%;
+  max-width: 350px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+}
+
+.arco-label {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: #555;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.arco-desc {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: #333;
+  text-align: left;
+  max-width: 580px;
+  margin: 0 auto 16px;
+  line-height: 1.85;
+  overflow: hidden;
+}
+
+.arco-desc::first-letter {
+  font-family: var(--font-deco);
+  font-size: 3.6rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.74;
+  margin: 6px 8px 0 0;
+  color: #7700CC;
+}
+
+.arco-desc::first-line {
+  font-style: italic;
+  color: #0044FF;
+  font-weight: 600;
+}
+
+.arco-firma {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--teal);
+  text-decoration: underline;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+/* ================================================================
+   PÁGINA: MULTIMEDIA
+   ================================================================ */
+.page-multimedia {
+  padding: 20px 22px 28px;
+  font-family: var(--font-ui);
+  background: #fafafa;
+}
+
+.page-multimedia h2 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 1.5px;
+}
+
+/* Videos — Grid 3 columnas */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  background: #c5e8f8;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 26px;
+}
+
+.video-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 8px 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.video-card p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 118px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Música — Grid 3 columnas */
+.musica-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.musica-col { border-right: 1px solid #ccc; }
+.musica-col:last-child { border-right: none; }
+
+.musica-col-header {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 9px 4px;
+  border-bottom: 1px solid #ccc;
+  background: #f5f5f5;
+  color: #111;
+  letter-spacing: 1px;
+}
+
+.audio-item {
+  padding: 9px 7px;
+  border-bottom: 1px solid #e4e4e4;
+  background: #eaf4fb;
+}
+.audio-item:nth-child(odd) { background: #ddeefa; }
+.audio-item:last-child { border-bottom: none; }
+
+.audio-item p {
+  font-size: 0.7rem;
+  color: #333;
+  margin-bottom: 4px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.audio-item audio {
+  width: 100%;
+  height: 26px;
+}
+
+/* ================================================================
+   PÁGINA: FORMULARIO
+   ================================================================ */
+.page-formulario {
+  padding: 24px 32px 32px;
+  background: #fafafa;
+  font-family: var(--font-ui);
+}
+
+.page-formulario h2 {
+  font-family: var(--font-title);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.page-formulario fieldset {
+  border: 1px dashed #aaa;
+  padding: 14px 18px 16px;
+  margin-bottom: 18px;
+  border-radius: 4px;
+}
+
+.page-formulario legend {
+  font-size: 0.82rem;
+  color: #666;
+  padding: 0 8px;
+  font-style: italic;
+  font-family: var(--font-body);
+}
+
+.f-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 11px;
+  flex-wrap: wrap;
+}
+
+.f-row label.f-label {
+  font-size: 0.88rem;
+  color: #333;
+  min-width: 175px;
+  padding-top: 5px;
+  font-weight: 600;
+}
+
+.page-formulario input[type="text"],
+.page-formulario input[type="password"] {
+  border: 1px solid #bbb;
+  padding: 4px 10px;
+  font-size: 0.86rem;
+  border-radius: 2px;
+  font-family: var(--font-ui);
+  min-width: 190px;
+}
+
+.page-formulario input[type="text"]::placeholder { color: #aaa; }
+
+.page-formulario textarea {
+  border: 1px solid #bbb;
+  padding: 5px 10px;
+  font-size: 0.86rem;
+  border-radius: 2px;
+  font-family: var(--font-body);
+  width: 290px;
+  height: 65px;
+  resize: vertical;
+}
+
+.page-formulario select {
+  border: 1px solid #bbb;
+  padding: 4px 8px;
+  font-size: 0.86rem;
+  border-radius: 2px;
+  font-family: var(--font-ui);
+}
+
+.inline-selects { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+
+.radio-group, .check-group {
+  display: flex; gap: 14px; flex-wrap: wrap; padding-top: 3px;
+}
+
+.radio-group label, .check-group label {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  min-width: auto;
+}
+
+.btn-row { display: flex; gap: 10px; }
+
+.page-formulario button {
+  padding: 6px 16px;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  background: #f0f0f0;
+  border-radius: 2px;
+  letter-spacing: 0.4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page-formulario button:hover {
+  background: var(--teal); color: #fff; border-color: var(--teal);
+}
+
+/* ================================================================
+   PÁGINA: FOTOGRAFÍA
+   ================================================================ */
+.page-foto {
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-foto img {
+  width: 100%;
+  max-height: 90vh;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92) contrast(1.06);
+}
+
+/* ================================================================
+   PÁGINA: WIKIPEDIA
+   ================================================================ */
+.page-wiki {
+  width: 100%; height: 100%; min-height: 520px;
+}
+
+.page-wiki iframe {
+  width: 100%; height: 100%; min-height: 520px; border: none;
+}
+
+/* ================================================================
+   PÁGINA: ALUMNOS (footer grid)
+   ================================================================ */
+.page-alumnos {
+  background: #f5f0e0;
+  padding: 22px 20px;
+  font-family: var(--font-ui);
+  min-height: 100vh;
+}
+
+.alumnos-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.alumnos-header h2 {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: #555;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.alumnos-header p {
+  font-size: 0.82rem;
+  color: #777;
+}
+
+/* Grid 2 filas × 2 columnas = 4 celdas */
+.students-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+  border: 3px solid #4a90d9;
+  padding: 22px;
+  border-radius: 4px;
+}
+
+.student-card {
+  border: 1px solid #999;
+  padding: 18px 16px 14px;
+  border-radius: 2px;
+  position: relative;
+  background: #fafafa;
+  text-align: center;
+}
+
+.student-card::before {
+  content: '— Estudiante —';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fafafa;
+  padding: 0 10px;
+  font-size: 0.7rem;
+  color: #777;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.student-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.student-code {
+  font-size: 0.88rem;
+  color: #333;
+  display: block;
+}
+
+/* Responsive del grid de alumnos < 576px */
+@media (max-width: 576px) {
+  .students-grid {
+    border-color: #8B2BE2;
+    background: #ede0ff;
+    padding: 14px;
+  }
+  .student-card {
+    background: #f3eaff;
+  }
+  .student-card::before {
+    background: #f3eaff;
+    font-size: 0.5rem !important;
+  }
+  .student-name  { font-size: 0.5rem !important; }
+  .student-code  { font-size: 0.5rem !important; }
+  .alumnos-header h2 { font-size: 0.5rem !important; }
+  .alumnos-header p  { font-size: 0.5rem !important; }
+}
+
+/* ================================================================
+   RESPONSIVE GLOBAL — ≤ 576px
+   ================================================================ */
+@media (max-width: 576px) {
+  body { background-color: #c8f0f0; font-size: 0.82rem; }
+
+  header { padding: 10px 14px; gap: 12px; min-height: 60px; }
+  header h1 { font-size: 0.75rem; letter-spacing: 1px; }
+  header .logo { width: 46px; height: 46px; }
+
+  nav.main-nav { flex-wrap: wrap; }
+  nav.main-nav a { font-size: 0.7rem; padding: 9px 10px; letter-spacing: 0; }
+
+  /* Sidebar pasa arriba del contenido */
+  .main-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  aside.sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 6px;
+    justify-content: center;
+  }
+  aside.sidebar a {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .content-area iframe { min-height: 380px; }
+
+  /* Multimedia apila */
+  .videos-grid { grid-template-columns: 1fr; }
+  .musica-grid { grid-template-columns: 1fr; }
+  .musica-col { border-right: none; border-bottom: 1px solid #ccc; }
+}
