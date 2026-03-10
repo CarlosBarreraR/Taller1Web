@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bootstrap + Grid + Flex — UIS disWeb26</title>
+
+  <!-- Favicon: ícono de aula de clase -->
+  <link rel="icon" type="image/png"
+        href="https://cdn-icons-png.flaticon.com/512/3976/3976630.png"/>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet"/>
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/estilos.css"/>
+
+  <style>
+    /* Altura dinámica del iframe */
+    html, body { height: 100%; overflow: hidden; }
+    .main-wrapper { height: calc(100vh - 80px - 43px - 43px); }
+    .content-area { height: 100%; }
+    .content-area iframe { height: 100%; min-height: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════
+       HEADER
+  ═══════════════════════════════ -->
+  <header>
+    <img class="logo"
+         src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Escudo_UIS.svg/200px-Escudo_UIS.svg.png"
+         alt="Logo UIS"/>
+    <h1>Universidad Industrial de Santander</h1>
+  </header>
+
+  <!-- ═══════════════════════════════
+       NAVBAR con Tooltips CSS
+  ═══════════════════════════════ -->
+  <nav class="main-nav">
+    <a href="#"
+       data-tooltip="Formulario con controles clásicos HTML5"
+       onclick="cargar('formulario.html', this); return false;">
+      Formulario HTML5
+    </a>
+    <a href="#"
+       data-tooltip="Visita la enciclopedia libre Wikipedia"
+       onclick="cargar('wikipedia.html', this); return false;">
+      Wikipedia
+    </a>
+    <a href="#"
+       data-tooltip="Galería fotográfica"
+       onclick="cargar('fotografia.html', this); return false;">
+      Una fotografía
+    </a>
+  </nav>
+
+  <!-- ═══════════════════════════════
+       LAYOUT PRINCIPAL — Grid 2 col
+  ═══════════════════════════════ -->
+  <div class="main-wrapper">
+
+    <!-- Sidebar izquierdo -->
+    <aside class="sidebar">
+      <a href="#"
+         onclick="cargar('cuento.html', this); return false;"
+         class="active">Cuento</a>
+      <a href="#"
+         onclick="cargar('arcoiris.html', this); return false;">Arcoíris</a>
+      <a href="#"
+         onclick="cargar('multimedia.html', this); return false;">mosaico multimedia</a>
+    </aside>
+
+    <!-- Área principal con iframe -->
+    <div class="content-area">
+      <iframe id="visor"
+              src="carrusel.html"
+              title="Visor de contenido"
+              scrolling="yes">
+      </iframe>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════
+       FOOTER — clic carga alumnos
+  ═══════════════════════════════ -->
+  <footer class="main-footer" onclick="cargar('alumnos.html', null)">
+    <span>Los alumnos</span>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /**
+     * Carga una página en el iframe central.
+     * @param {string} src  - ruta del archivo a cargar
+     * @param {Element} el  - enlace que se hizo clic (para marcarlo activo)
+     */
+    function cargar(src, el) {
+      document.getElementById('visor').src = src;
+
+      // Marcar enlace activo en sidebar
+      if (el) {
+        document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+        if (el.closest('.sidebar')) el.classList.add('active');
+      }
+    }
+
+    // Al iniciar: mostrar el carrusel de animales automáticamente
+    window.addEventListener('load', function () {
+      document.getElementById('visor').src = 'carrusel.html';
+    });
+  </script>
+
+</body>
+</html>
+
