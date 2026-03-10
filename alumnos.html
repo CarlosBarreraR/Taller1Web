@@ -35,12 +35,6 @@
       color: #888;
     }
 
-    /* ═══════════════════════════════════════════════
-       GRID 2 filas × 2 columnas = 4 integrantes
-       (spec dice "2 filas 4 columnas" pero con 4
-        integrantes se hace 2×2; el border azul
-        envuelve todo el grid como en el prototipo)
-    ═══════════════════════════════════════════════ */
     .students-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -90,14 +84,8 @@
       display: block;
     }
 
-    /* ═══════════════════════════════════════════════
-       RESPONSIVE < 576px
-       — color de fondo cambia (lila/morado)
-       — tamaño de letra cambia a 0.5rem
-       — borde del grid cambia a morado
-    ═══════════════════════════════════════════════ */
     @media (max-width: 576px) {
-      body { background: #f5f0e0; }  /* el body no cambia, solo el grid */
+      body { background: #f5f0e0; }  
 
       .students-grid {
         border-color: #8B2BE2;         /* morado */
@@ -128,13 +116,6 @@
     <p>Grupo: B1</p>
   </div>
 
-  <!--
-    ╔══════════════════════════════════════════╗
-    ║  IMPORTANTE: reemplaza los datos de cada ║
-    ║  estudiante con la información real del  ║
-    ║  grupo antes de entregar.                ║
-    ╚══════════════════════════════════════════╝
-  -->
   <div class="students-grid">
 
     <div class="student-card">
