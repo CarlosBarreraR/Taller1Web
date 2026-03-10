@@ -36,7 +36,6 @@
       overflow: hidden;
     }
 
-    /* La pista tiene 8 tarjetas (4 reales + 4 copia) para loop infinito */
     .carousel-track {
       display: flex;
       gap: 22px;
@@ -48,7 +47,6 @@
     /* Pausa al hacer hover */
     .carousel-track:hover { animation-play-state: paused; }
 
-    /* 50% → exactamente las primeras 4 tarjetas de ancho */
     @keyframes loop-slide {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -112,7 +110,7 @@
   <div class="carousel-outer">
     <div class="carousel-track">
 
-      <!-- ═══ 4 tarjetas reales ═══ -->
+      <!-- 4 tarjetas -->
       <div class="animal-card">
         <span class="emoji">🐶</span>
         <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=240&h=240&fit=crop&crop=faces"
@@ -145,7 +143,6 @@
         <p>Suave y tierno. Adora las zanahorias y los mimos.</p>
       </div>
 
-      <!-- ═══ Copia exacta para scroll infinito ═══ -->
       <div class="animal-card">
         <span class="emoji">🐶</span>
         <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=240&h=240&fit=crop&crop=faces"
