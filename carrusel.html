@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrusel de Animales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(150deg, #d6f5f5 0%, #a8e6e6 50%, #d6f5f5 100%);
+      font-family: 'Rajdhani', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: #1a8080;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .carousel-outer {
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    /* La pista tiene 8 tarjetas (4 reales + 4 copia) para loop infinito */
+    .carousel-track {
+      display: flex;
+      gap: 22px;
+      padding: 8px 20px 16px;
+      width: max-content;
+      animation: loop-slide 20s linear infinite;
+    }
+
+    /* Pausa al hacer hover */
+    .carousel-track:hover { animation-play-state: paused; }
+
+    /* 50% → exactamente las primeras 4 tarjetas de ancho */
+    @keyframes loop-slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Tarjeta de animal ── */
+    .animal-card {
+      width: 190px;
+      background: #fff;
+      border-radius: 16px;
+      border-top: 5px solid #2abfbf;
+      box-shadow: 0 6px 22px rgba(42,191,191,0.2);
+      padding: 18px 14px 16px;
+      text-align: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .animal-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 32px rgba(42,191,191,0.35);
+    }
+
+    .animal-card .emoji {
+      font-size: 1.6rem;
+      margin-bottom: 7px;
+      display: block;
+    }
+
+    .animal-card img {
+      width: 116px;
+      height: 116px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #d0f2f2;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .animal-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.98rem;
+      color: #1a8080;
+      margin-bottom: 5px;
+    }
+
+    .animal-card p {
+      font-size: 0.73rem;
+      color: #666;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🐾 Animales Domésticos 🐾</h2>
+
+  <div class="carousel-outer">
+    <div class="carousel-track">
+
+      <!-- ═══ 4 tarjetas reales ═══ -->
+      <div class="animal-card">
+        <span class="emoji">🐶</span>
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=240&h=240&fit=crop&crop=faces"
+             alt="Perro"/>
+        <h3>Perro</h3>
+        <p>El mejor amigo del hombre. Leal, juguetón y siempre fiel.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐱</span>
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=240&h=240&fit=crop&crop=faces"
+             alt="Gato"/>
+        <h3>Gato</h3>
+        <p>Elegante e independiente. Su ronroneo calma el alma.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐹</span>
+        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=240&h=240&fit=crop"
+             alt="Hámster"/>
+        <h3>Hámster</h3>
+        <p>Pequeño y veloz. Le encanta correr en su rueda por las noches.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐇</span>
+        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=240&h=240&fit=crop"
+             alt="Conejo"/>
+        <h3>Conejo</h3>
+        <p>Suave y tierno. Adora las zanahorias y los mimos.</p>
+      </div>
+
+      <!-- ═══ Copia exacta para scroll infinito ═══ -->
+      <div class="animal-card">
+        <span class="emoji">🐶</span>
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=240&h=240&fit=crop&crop=faces"
+             alt="Perro"/>
+        <h3>Perro</h3>
+        <p>El mejor amigo del hombre. Leal, juguetón y siempre fiel.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐱</span>
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=240&h=240&fit=crop&crop=faces"
+             alt="Gato"/>
+        <h3>Gato</h3>
+        <p>Elegante e independiente. Su ronroneo calma el alma.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐹</span>
+        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=240&h=240&fit=crop"
+             alt="Hámster"/>
+        <h3>Hámster</h3>
+        <p>Pequeño y veloz. Le encanta correr en su rueda por las noches.</p>
+      </div>
+
+      <div class="animal-card">
+        <span class="emoji">🐇</span>
+        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=240&h=240&fit=crop"
+             alt="Conejo"/>
+        <h3>Conejo</h3>
+        <p>Suave y tierno. Adora las zanahorias y los mimos.</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
