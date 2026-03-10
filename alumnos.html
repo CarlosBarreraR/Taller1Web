@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Los Alumnos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Cinzel:wght@700&display=swap"
+        rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Fondo base cuando viewport > 576px ─── */
+    body {
+      background: #f5f0e0;
+      font-family: 'Rajdhani', sans-serif;
+      padding: 22px 20px;
+      min-height: 100vh;
+    }
+
+    .alumnos-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .alumnos-header h2 {
+      font-size: 0.88rem;
+      color: #666;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .alumnos-header p {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    /* ═══════════════════════════════════════════════
+       GRID 2 filas × 2 columnas = 4 integrantes
+       (spec dice "2 filas 4 columnas" pero con 4
+        integrantes se hace 2×2; el border azul
+        envuelve todo el grid como en el prototipo)
+    ═══════════════════════════════════════════════ */
+    .students-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 18px;
+      border: 3px solid #4a90d9;
+      padding: 22px;
+      border-radius: 4px;
+      background: transparent;
+    }
+
+    /* Cada celda del grid */
+    .student-card {
+      border: 1px solid #999;
+      padding: 20px 16px 16px;
+      border-radius: 2px;
+      position: relative;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    /* Etiqueta "— Estudiante —" sobre el borde */
+    .student-card::before {
+      content: '— Estudiante —';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fafafa;
+      padding: 0 10px;
+      font-size: 0.72rem;
+      color: #777;
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    .student-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .student-code {
+      font-size: 0.88rem;
+      color: #333;
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE < 576px
+       — color de fondo cambia (lila/morado)
+       — tamaño de letra cambia a 0.5rem
+       — borde del grid cambia a morado
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 576px) {
+      body { background: #f5f0e0; }  /* el body no cambia, solo el grid */
+
+      .students-grid {
+        border-color: #8B2BE2;         /* morado */
+        background: #ede0ff;           /* fondo lila del grid */
+        padding: 14px;
+      }
+
+      .student-card {
+        background: #f3eaff;
+      }
+
+      .student-card::before {
+        background: #f3eaff;
+        font-size: 0.5rem !important;
+      }
+
+      .student-name  { font-size: 0.5rem !important; }
+      .student-code  { font-size: 0.5rem !important; }
+      .alumnos-header h2 { font-size: 0.5rem !important; }
+      .alumnos-header p  { font-size: 0.5rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="alumnos-header">
+    <h2>Programación en la Web</h2>
+    <p>Grupo: B1</p>
+  </div>
+
+  <!--
+    ╔══════════════════════════════════════════╗
+    ║  IMPORTANTE: reemplaza los datos de cada ║
+    ║  estudiante con la información real del  ║
+    ║  grupo antes de entregar.                ║
+    ╚══════════════════════════════════════════╝
+  -->
+  <div class="students-grid">
+
+    <div class="student-card">
+      <p class="student-name">Estudiante 1 Nombre Apellido</p>
+      <span class="student-code">Codigo: 2180000</span>
+    </div>
+
+    <div class="student-card">
+      <p class="student-name">Estudiante 2 Nombre Apellido</p>
+      <span class="student-code">Codigo: 2205001</span>
+    </div>
+
+    <div class="student-card">
+      <p class="student-name">Estudiante 3 Nombre Apellido</p>
+      <span class="student-code">Codigo: 2205002</span>
+    </div>
+
+    <div class="student-card">
+      <p class="student-name">Estudiante 4 Nombre Apellido</p>
+      <span class="student-code">Codigo: 2205003</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
