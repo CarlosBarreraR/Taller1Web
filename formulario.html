@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario HTML5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:wght@400&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fafafa;
+      font-family: 'Rajdhani', sans-serif;
+      padding: 24px 34px 36px;
+      color: #222;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #111;
+      text-align: center;
+      margin-bottom: 26px;
+      line-height: 1.5;
+    }
+
+    fieldset {
+      border: 1px dashed #aaa;
+      padding: 14px 18px 16px;
+      margin-bottom: 18px;
+      border-radius: 4px;
+    }
+
+    legend {
+      font-size: 0.82rem;
+      color: #666;
+      padding: 0 8px;
+      font-style: italic;
+      font-family: 'Lora', serif;
+    }
+
+    .f-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 11px;
+      flex-wrap: wrap;
+    }
+
+    .f-label {
+      font-size: 0.87rem;
+      color: #333;
+      min-width: 200px;
+      padding-top: 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid #bbb;
+      padding: 4px 10px;
+      font-size: 0.86rem;
+      border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      min-width: 185px;
+    }
+
+    input[type="text"]::placeholder { color: #aaa; }
+
+    textarea {
+      border: 1px solid #bbb;
+      padding: 5px 10px;
+      font-size: 0.86rem;
+      border-radius: 2px;
+      font-family: 'Lora', serif;
+      width: 280px;
+      height: 64px;
+      resize: vertical;
+    }
+
+    select {
+      border: 1px solid #bbb;
+      padding: 4px 8px;
+      font-size: 0.86rem;
+      border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .inline-selects {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .sel-group { display: flex; flex-direction: column; gap: 2px; }
+    .sel-group span { font-size: 0.7rem; color: #888; }
+
+    .radio-group, .check-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    .radio-group label,
+    .check-group label {
+      font-weight: 400;
+      font-size: 0.87rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      min-width: auto;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 6px 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid #aaa;
+      cursor: pointer;
+      background: #f0f0f0;
+      border-radius: 2px;
+      letter-spacing: 0.4px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    button:hover {
+      background: #2abfbf;
+      color: #fff;
+      border-color: #2abfbf;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Formulario con controles clásicos</h2>
+
+  <fieldset>
+    <legend>Texto</legend>
+
+    <div class="f-row">
+      <label class="f-label">Campo de texto:</label>
+      <input type="text" placeholder="puedes colocar texto aquí" size="28"/>
+    </div>
+
+    <div class="f-row">
+      <label class="f-label">Área de texto:</label>
+      <textarea placeholder="Puede colocar texto multilínea"></textarea>
+    </div>
+
+    <div class="f-row">
+      <label class="f-label">contraseña:</label>
+      <input type="password" value="••••••••••" size="22"/>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Seleccionables</legend>
+
+    <div class="f-row">
+      <label class="f-label">Lista de selección simple (tipo combo):</label>
+      <select>
+        <option>Gato</option>
+        <option>Perro</option>
+        <option>Roedor</option>
+      </select>
+
+      &nbsp;&nbsp;
+
+        <div class="inline-selects">
+        <div class="sel-group">
+          <select size="3">
+            <option>Perro</option>
+            <option>Gato</option>
+            <option>Roedor</option>
+          </select>
+        </div>
+        <div class="sel-group">
+          <select size="3">
+            <option>Roedor</option>
+            <option>Lobo</option>
+            <option selected>León</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="f-row">
+      <label class="f-label">Lista de selección múltiple, puede seleccionar varios ctrl+opción:</label>
+      <select multiple size="4" style="width:150px;">
+        <option>Roedor</option>
+        <option>Lobo</option>
+        <option selected>León</option>
+        <option>Tigre</option>
+      </select>
+    </div>
+
+    <div class="f-row">
+      <label class="f-label">Lista de botones radio:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="r1" value="perro"/>  Perro</label>
+        <label><input type="radio" name="r1" value="gato"/>   Gato</label>
+        <label><input type="radio" name="r1" value="roedor" checked/> Roedor</label>
+      </div>
+    </div>
+
+    <div class="f-row">
+      <label class="f-label">Lista de cajas (checkbox):</label>
+      <div class="check-group">
+        <label><input type="checkbox" value="chico"/>   Chico</label>
+        <label><input type="checkbox" value="mediano"/> Mediano</label>
+        <label><input type="checkbox" value="grande" checked/> Grande</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- ═══ BOTONES ═══ -->
+  <fieldset>
+    <legend>Botones</legend>
+    <div class="btn-row">
+      <button type="submit">Enviar información</button>
+      <button type="reset">Borrar información</button>
+      <button type="button">Botón</button>
+    </div>
+  </fieldset>
+
+</body>
+</html>
