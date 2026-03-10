@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arco Iris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;1,400&family=Rajdhani:wght@600&display=swap"
+        rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5faff;
+      font-family: 'Lora', serif;
+      padding: 26px 28px 34px;
+      text-align: center;
+    }
+
+    /* ═══════════════════════════════════════
+       TÍTULO CON LETRAS ARCOÍRIS
+       Fuente especial: Cinzel Decorative
+    ═══════════════════════════════════════ */
+    .arco-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    /* Cada letra con su color del espectro */
+    .c1  { color: #FF0000; font-size: 5rem; vertical-align: middle; display: inline-block; line-height:1; }
+    .c2  { color: #FF4000; }
+    .c3  { color: #FF8800; }
+    .c4  { color: #FFCC00; }
+    /* espacio */
+    .c5  { color: #00AA00; font-size: 4.5rem; vertical-align: middle; display: inline-block; line-height:1; }
+    .c6  { color: #0055FF; }
+    .c7  { color: #2200CC; }
+    .c8  { color: #7700CC; }
+
+    .arco-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.88rem;
+      color: #666;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* Imagen arcoíris (enlace externo, sin archivo local) */
+    .arco-img {
+      width: 56%;
+      max-width: 340px;
+      display: block;
+      margin: 0 auto 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    }
+
+    .arco-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      color: #555;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    /* ═══════════════════════════════════════
+       PÁRRAFO con ::first-letter y ::first-line
+    ═══════════════════════════════════════ */
+    .arco-desc {
+      font-family: 'Lora', serif;
+      font-size: 0.97rem;
+      color: #333;
+      text-align: left;
+      max-width: 580px;
+      margin: 0 auto 18px;
+      line-height: 1.88;
+      overflow: hidden;
+    }
+
+    .arco-desc::first-letter {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: #7700CC;
+      float: left;
+      line-height: 0.72;
+      margin: 6px 9px 0 0;
+    }
+
+    .arco-desc::first-line {
+      font-style: italic;
+      color: #0044FF;
+      font-weight: 600;
+    }
+
+    .arco-firma {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.92rem;
+      color: #2abfbf;
+      text-decoration: underline;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Título con letras del arcoíris ═══ -->
+  <div class="arco-title">
+    <!-- A r c o -->
+    <span class="c1">A</span><span class="c2">r</span><span class="c3">c</span><span class="c4">o</span>
+    &nbsp;
+    <!-- I r i s -->
+    <span class="c5">I</span><span class="c6">r</span><span class="c7">i</span><span class="c8">s</span>
+  </div>
+
+  <p class="arco-subtitle">— La maravilla del cielo —</p>
+
+  <!-- Imagen desde Wikipedia Commons (enlace externo) -->
+  <img class="arco-img"
+       src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Double-alaskan-rainbow.jpg/640px-Double-alaskan-rainbow.jpg"
+       alt="Arco Iris"/>
+
+  <p class="arco-label">Arco Iris</p>
+
+  <!-- Párrafo con primera letra capital y primera línea diferente -->
+  <p class="arco-desc">El arco iris representa una de las maravillas más hermosas de la naturaleza, la difracción de la luz en sus colores primarios representa una figura natural en el cielo, que sobrepasa toda obra de arte en el planeta tierra y nos impacta con su belleza y colorido. Cuando la luz solar atraviesa las gotas de agua suspendidas en el aire, se divide en sus componentes espectrales formando ese arco multicolor que nos maravilla desde la antigüedad.</p>
+
+  <br/>
+  <span class="arco-firma">El profesor</span>
+
+</body>
+</html>
